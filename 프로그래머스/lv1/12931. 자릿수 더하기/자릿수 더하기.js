@@ -1,0 +1,1 @@
+const solution = n => n.toString().split('').map((i) => +i).reduce((sum, i) => sum + i);
