@@ -1,23 +1,23 @@
-function solution(numer1, denom1, numer2, denom2) {
-  const fractions = [numer1 * denom2 + numer2 * denom1, denom1 * denom2];
-  let arr1 = [];
-  let arr2 = [];
 
-  // 공약수 구하기
-  for (let i = 1; i <= fractions[0]; i++) {
-    if (fractions[0] % i === 0) arr1.push(i);
-  }
-  for (let i = 1; i <= fractions[1]; i++) {
-    if (fractions[1] % i === 0) arr2.push(i);
-  }
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+function fnGCD(a, b){
+    return (a%b)? fnGCD(b, a%b) : b;
+}
 
-  // 최대공약수 구하기
-  const gcd = Math.max(
-    ...arr1.filter((num) => {
-      return arr2.includes(num);
-    })
-  );
+function solution(denum1, num1, denum2, num2) {
+    let denum = denum1*num2 + denum2*num1;
+    let num = num1 * num2;
+    let gcd = fnGCD(denum, num); //최대공약수
 
-  // 최대공약수로 나눈 분자, 분모 값을 반환
-  return [fractions[0] / gcd, fractions[1] / gcd];
+    return [denum/gcd, num/gcd];
 }
